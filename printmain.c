@@ -1,20 +1,26 @@
 #include "main.h"
 
-int _printf(const char *format, ...){
-
+/**
+ * _printf - self made printf function
+ * @format: initial string with all identifiers
+ * Return: strings with keys substituated for variables
+ */
+int _printf(const char *format, ...)
+{
 	char *pos, *string;
 	int size = 0, total_size = 0, p = 0, l = 0;
 	char (*operation)(va_list);
-    
-    int num_args = stringLen(format);
 
-    va_list args;
+	int num_args = stringLen(format);
 
-    if (format == NULL){
-        return (-1);
+	va_list args;
+
+	if (format == NULL)
+	{
+		return (-1);
     }
 
-    va_start(args,format);
+	va_start(args,format);
 
 	pos = starting_space();
 	if (pos == NULL)
@@ -22,7 +28,7 @@ int _printf(const char *format, ...){
 
 	while (format[p] != '\0')
 	{
-		if (format[p] != '%') /* copy format into buffer until '%' */
+		if (format[p] != '%') /* read format till a % is found */
 		{
 			size = chk_space_overflow(pos, size);
 			pos[size++] = format[p++];
@@ -45,26 +51,28 @@ int _printf(const char *format, ...){
 			}
 			else
 			{
-				operation = get_operation(format[p]); /* grab function */
+				operation = get_operation(format[p]); /* get relevant operation depending on key */
 				if (operation == NULL)  /* handle fake id */
 				{
 					size = chk_space_overflow(pos, size);
-					pos[size++] = '%'; 
+					pos[size++] = '%';
 					total_size++;
-					pos[size++] = format[p]; 
+					pos[size++] = format[p];
 					total_size++;
 				}
-				else /* return string, copy to buffer */
+				else
 				{
 					string = operation(args);
 
-					if (string == NULL){
+					if (string == NULL)
+					{
 						va_end(args);
 						free(pos);
 						return (-1);
 					}
-					
-					if (format[p] == 'c' && string[0] == '\0'){
+
+					if (format[p] == 'c' && string[0] == '\0')
+					{
 						size = chk_space_overflow(pos, size);
 						pos[size++] = '\0';
 						total_size++;
@@ -72,7 +80,8 @@ int _printf(const char *format, ...){
 
 					l = 0;
 
-					while (string[l] != '\0'){
+					while (string[l] != '\0')
+					{
 						size = chk_space_overflow(pos, size);
 						pos[size++] = string[l];
 						total_size++; 
