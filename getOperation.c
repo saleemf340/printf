@@ -7,24 +7,26 @@
  */
 char* (*get_operation(char c))(va_list)
 {
-	int k = 0;
+	int i = 0;
 
-	key_ops keys[] = {
+	key_ops identifier[] = {
 		{'c', handle_c},
-		{'s', handle_s},
         {'d', handle_d},
+        {'s', handle_s},
         {'i', handle_d},
+        {'R', encrypt_rot13},
         {'b', int_to_bin},
+        {'r', reverse},
         {'\0', NULL}
 	};
 
-	while (keys[k].keyID != '\0')
+	while (identifier[i].keyID != '\0')
 	{
-		if (keys[k].keyID == c)
+		if (identifier[i].keyID == c)
         {
-            return (keys[k].rule);
+            return (identifier[i].rule);
         }
-		k++;
+		i++;
 	}
 	return (NULL);
 }
