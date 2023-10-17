@@ -1,12 +1,16 @@
 #include "main.h"
-
-int stringLen(char *c){
-    
+/**
+ * stringLen - find length of string
+ * @c: string passed to function
+ * Return: integer length
+ */
+int stringLen(char *c)
+{
 	int a = 0;
 
 	while (*(c + a))
+	{
 		a++;
-
+	}
 	return (a);
-
 }
