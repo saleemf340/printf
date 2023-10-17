@@ -18,7 +18,7 @@ char *reverse(va_list args)
 	{
 		og = ")llun(";
 	}
-	size = _strlen(og);
+	size = stringLen(og);
 
 	rog = malloc(sizeof(char) * (size + 1));
 	if (rog == NULL)

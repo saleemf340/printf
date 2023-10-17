@@ -13,7 +13,7 @@ char *encrypt_rot13(va_list args)
 	og = va_arg(args, char *);
 
     /* memory for encrypted characters*/
-	enc = malloc(sizeof(char) * (_strlen(og) + 1));
+	enc = malloc(sizeof(char) * (stringLen(og) + 1));
 
 	if (enc == NULL)
 	{
