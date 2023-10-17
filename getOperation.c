@@ -2,10 +2,10 @@
 
 /**
  * get_func - returns needed function
- * @i: identifier for function
+ * @c: identifier for function
  * Return: Pointer to needed function
  */
-char (*get_operation(char i))(va_list)
+char (*get_operation(char c))(va_list)
 {
 	int k = 0;
 
@@ -16,7 +16,7 @@ char (*get_operation(char i))(va_list)
 
 	while (keys[k].keyID != '\0')
 	{
-		if (keys[k].keyID == i)
+		if (keys[k].keyID == c)
 			return (keys[k].rule);
 		k++;
 	}
