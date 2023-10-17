@@ -148,6 +148,6 @@ int chk_space_overflow(char *string, int len)
  */
 int main(void)
 {
-	_printf("Saleem did this %s","hello");
+	_printf("Saleem did this %s", "hello");
 	return (0);
 }
