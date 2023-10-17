@@ -24,5 +24,6 @@ char *handle_d(va_list args);
 
 char* (*get_operation(char c))(va_list);
 char *int_to_str(int multiple, int len_size, int num);
+char *int_to_bin(va_list args);
 
 #endif

@@ -13,7 +13,8 @@ char* (*get_operation(char c))(va_list)
 		{'c', handle_c},
 		{'s', handle_s},
         {'d', handle_d},
-        {'i', handle_d}
+        {'i', handle_d},
+        {'b', int_to_bin}
 	};
 
 	while (keys[k].keyID != '\0')
