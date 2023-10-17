@@ -37,13 +37,13 @@ int _printf(const char *format, ...)
 		else /* if %, find function */
 		{
 			p++;
-			if (format[p] == '\0') /* handle single ending % */
+			if (format[p] == '\0') /* single % */
 			{
 				va_end(args);
 				free(pos);
 				return (-1);
 			}
-			if (format[p] == '%') /* handle double %'s */
+			if (format[p] == '%') /* double %'s */
 			{
 				size = chk_space_overflow(pos, size);
 				pos[size++] = format[p];
@@ -51,8 +51,8 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				operation = get_operation(format[p]); /* get relevant operation depending on key */
-				if (operation == NULL)  /* handle fake id */
+				operation = get_operation(format[p]); /* get relevant operation */
+				if (operation == NULL)  /* empty id */
 				{
 					size = chk_space_overflow(pos, size);
 					pos[size++] = '%';
@@ -99,7 +99,7 @@ int _printf(const char *format, ...)
 }
 
 /**
- * starting space - creates initial space for the string 
+ * starting space - creates initial space for the string
  * Return: pointer to space created in memory
  */
 char *starting_space(void)
