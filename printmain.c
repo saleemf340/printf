@@ -141,3 +141,13 @@ int chk_space_overflow(char *string, int len)
 	}
 	return (len);
 }
+
+/**
+ * main - sample main program
+ * Return: 0 on sucess
+ */
+int main(void)
+{
+	_printf("Saleem did this %s","hello");
+	return (0);
+}
