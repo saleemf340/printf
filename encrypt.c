@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * rot13 - encrypts with rot13 standard
+ * encrypt_rot13 - encrypts with rot13 standard
  * @args: string to change
  * Return: encrypted version of input
  */
