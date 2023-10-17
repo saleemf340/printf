@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * get_func - returns needed function
- * @c: identifier for function
- * Return: Pointer to needed function
+ * get_operation - outputs function for the key
+ * @c: key for function
+ * Return: Pointer to function
  */
 char* (*get_operation(char c))(va_list)
 {
