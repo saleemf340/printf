@@ -11,8 +11,6 @@ int _printf(const char *format, ...)
 	int size = 0, total_size = 0, p = 0, l = 0;
 	char (*operation)(va_list);
 
-	int num_args = stringLen(format);
-
 	va_list args;
 
 	if (format == NULL)
