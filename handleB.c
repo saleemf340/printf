@@ -6,11 +6,11 @@
  */
 char *int_to_bin(va_list args)
 {
-	int a,b,c,t;
+	int a, b, c, t;
 	char *s;
+	a = 0;
+	t = 1;
 
-    a = 0;
-    t = 1;
 	c = va_arg(args, int);
 	b = c;
 
