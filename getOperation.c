@@ -11,7 +11,9 @@ char* (*get_operation(char c))(va_list)
 
 	key_ops keys[] = {
 		{'c', handle_c},
-		{'s', handle_s}
+		{'s', handle_s},
+        {'d', handle_d},
+        {'i', handle_d}
 	};
 
 	while (keys[k].keyID != '\0')
