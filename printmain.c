@@ -80,7 +80,6 @@ int _printf(const char *format, ...){
 	write_buffer(buffer, len, list);
 	return (total_len);
 }
-}
 
 /**
  * starting space - creates initial space for the string until it's ready to print
@@ -97,7 +96,7 @@ char *starting_space(void)
 }
 
 /**
- * write_buffer - prints whats in memory, then frees the memory
+ * print_to_screen - prints whats in memory, then frees the memory
  * @space: space holding print-ables
  * @len: length of string
  */
