@@ -16,7 +16,7 @@ char *handle_d(va_list args)
 	if (d == 0)
 	{
 		len_size++;
-		return (int_to_str(div, len_size, d));
+		return (int_to_str(multiple, len_size, d));
 	}
 
 	while (tmpry != 0)
