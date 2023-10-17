@@ -16,19 +16,19 @@ char *int_to_str(int multiple, int len_size, int num)
 	if (chr == NULL)
 		return (NULL);
 
-	if (num < 0) /* account for negative sign */
+	if (num < 0)
 	{
 		chr[0] = '-';
 		k++;
 	}
-	while (num < 0) /* convert each num to string */
+	while (num < 0)
 	{
-		chr[k] = ((num / multiple) * -1 + '0'); /* *-1 to handle min int */
+		chr[k] = ((num / multiple) * -1 + '0');
 		num = num % multiple;
 		multiple /= 10;
 		k++;
 	}
-	while (div >= 1) /* same, this case for positives */
+	while (multiple >= 1)
 	{
 		chr[k] = ((num / multiple) + '0');
 		num = num % multiple;
