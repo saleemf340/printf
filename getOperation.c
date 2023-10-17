@@ -17,7 +17,9 @@ char* (*get_operation(char c))(va_list)
 	while (keys[k].keyID != '\0')
 	{
 		if (keys[k].keyID == c)
-			return (keys[k].rule);
+        {
+            return (keys[k].rule);
+        }
 		k++;
 	}
 	return (NULL);
