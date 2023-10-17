@@ -18,9 +18,9 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 	{
 		return (-1);
-    }
+	}
 
-	va_start(args,format);
+	va_start(args, format);
 
 	pos = starting_space();
 	if (pos == NULL)
@@ -84,7 +84,7 @@ int _printf(const char *format, ...)
 					{
 						size = chk_space_overflow(pos, size);
 						pos[size++] = string[l];
-						total_size++; 
+						total_size++;
 						l++;
 					}
 
@@ -99,7 +99,7 @@ int _printf(const char *format, ...)
 }
 
 /**
- * starting space - creates initial space for the string until it's ready to print
+ * starting space - creates initial space for the string 
  * Return: pointer to space created in memory
  */
 char *starting_space(void)
@@ -129,7 +129,7 @@ void print_to_screen(char *space, int len)
 
 /**
  * chk_space_overflow - if writing over allocated space,
- * print everything then set length 0 to start writing in the memory space again
+ * print everything then set length 0 to start overwriting in the memory space
  * @string: string to print
  * @len: position in memory
  * Return: length position
