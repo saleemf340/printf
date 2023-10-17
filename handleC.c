@@ -5,7 +5,8 @@
  * @args: char
  * Return: String verion of char
  */
-char *handle_c(va_list args){
+char *handle_c(va_list args)
+{
 	char *mem;
 	char c;
 
