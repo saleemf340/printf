@@ -15,7 +15,7 @@ char *handle_s(va_list args)
 	{
 		source = "(null)";
 	}
-	len = _strlen(source);
+	len = stringLen(source);
 	final = malloc(sizeof(char) * len + 1);
 
 	if (final == NULL)
