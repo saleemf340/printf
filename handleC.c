@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- * handle_c - returns char as string
- * @list: char
+ * handle_c - outputs char as string
+ * @args: char
  * Return: String verion of char
  */
-char *handle_c(va_list list){
+char *handle_c(va_list args){
 	char *mem;
 	char c;
 
-	c = va_arg(list, int);
+	c = va_arg(args, int);
 
 	if (c == 0)
 		c = '\0';

@@ -1,15 +1,15 @@
 #include "main.h"
 /**
- * handle_s - takes string and return string
- * @list: string
+ * handle_s - input string output string
+ * @args: string
  * Return: string
  */
-char *handle_s(va_list list){
+char *handle_s(va_list args){
 	char *source;
 	char *final;
 	int len;
 
-	source = va_arg(list, char *);
+	source = va_arg(args, char *);
 	if (source == NULL)
 		source = "(null)";
 
