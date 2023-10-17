@@ -12,6 +12,13 @@ typedef struct Key
 {
 	char keyID;
 	char* (*rule)(va_list);
-} print;
+} key_ops ;
+
+char *starting_space(void);
+void print_to_screen(char *space, int len);
+int chk_space_overflow(char *string, int len);
+
+char *handle_c(va_list list);
+char *handle_s(va_list list);
 
 #endif

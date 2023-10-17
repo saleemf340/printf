@@ -1,6 +1,10 @@
 #include "main.h"
 
 int _printf(const char *format, ...){
+
+	char *pos, *string;
+	int size = 0, total_size = 0, p = 0, l = 0;
+	char (*operation)(va_list);
     
     int num_args = stringLen(format);
 
@@ -12,73 +16,77 @@ int _printf(const char *format, ...){
 
     va_start(args,format);
 
-	buffer = create_buffer();
-	if (buffer == NULL)
+	pos = starting_space();
+	if (pos == NULL)
 		return (-1);
 
-	va_start(list, format);
-
-	while (format[i] != '\0')
+	while (format[p] != '\0')
 	{
-		if (format[i] != '%') /* copy format into buffer until '%' */
+		if (format[p] != '%') /* copy format into buffer until '%' */
 		{
-			len = check_buffer_overflow(buffer, len);
-			buffer[len++] = format[i++];
-			total_len++;
+			size = chk_space_overflow(pos, size);
+			pos[size++] = format[p++];
+			total_size++;
 		}
 		else /* if %, find function */
 		{
-			i++;
-			if (format[i] == '\0') /* handle single ending % */
+			p++;
+			if (format[p] == '\0') /* handle single ending % */
 			{
-				va_end(list);
-				free(buffer);
+				va_end(args);
+				free(pos);
 				return (-1);
 			}
-			if (format[i] == '%') /* handle double %'s */
+			if (format[p] == '%') /* handle double %'s */
 			{
-				len = check_buffer_overflow(buffer, len);
-				buffer[len++] = format[i];
-				total_len++;
+				size = chk_space_overflow(pos, size);
+				pos[size++] = format[p];
+				total_size++;
 			}
 			else
 			{
-				f = get_func(format[i]); /* grab function */
-				if (f == NULL)  /* handle fake id */
+				operation = get_operation(format[p]); /* grab function */
+				if (operation == NULL)  /* handle fake id */
 				{
-					len = check_buffer_overflow(buffer, len);
-					buffer[len++] = '%'; total_len++;
-					buffer[len++] = format[i]; total_len++;
+					size = chk_space_overflow(pos, size);
+					pos[size++] = '%'; 
+					total_size++;
+					pos[size++] = format[p]; 
+					total_size++;
 				}
 				else /* return string, copy to buffer */
 				{
-					str = f(list);
-					if (str == NULL)
-					{
-						va_end(list);
-						free(buffer);
+					string = operation(args);
+
+					if (string == NULL){
+						va_end(args);
+						free(pos);
 						return (-1);
 					}
-					if (format[i] == 'c' && str[0] == '\0')
-					{
-						len = check_buffer_overflow(buffer, len);
-						buffer[len++] = '\0';
-						total_len++;
+					
+					if (format[p] == 'c' && string[0] == '\0'){
+						size = chk_space_overflow(pos, size);
+						pos[size++] = '\0';
+						total_size++;
 					}
-					j = 0;
-					while (str[j] != '\0')
-					{
-						len = check_buffer_overflow(buffer, len);
-						buffer[len++] = str[j];
-						total_len++; j++;
+
+					l = 0;
+
+					while (string[l] != '\0'){
+						size = chk_space_overflow(pos, size);
+						pos[size++] = string[l];
+						total_size++; 
+						l++;
 					}
-					free(str);
+
+					free(string);
 				}
-			} i++;
+			} p++;
 		}
 	}
-	write_buffer(buffer, len, list);
-	return (total_len);
+	print_to_screen(pos, size);
+	va_end(args);
+	return (total_size);
 }
 
 /**
@@ -119,7 +127,7 @@ void print_to_screen(char *space, int len)
  */
 int chk_space_overflow(char *string, int len)
 {
-	if (len > 1020)
+	if (len > 1024)
 	{
 		write(1, string, len);
 		len = 0;
