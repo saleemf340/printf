@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 {
 	char *pos, *string;
 	int size = 0, total_size = 0, p = 0, l = 0;
-	char (*operation)(va_list);
+	char* (*operation)(va_list);
 
 	va_list args;
 
