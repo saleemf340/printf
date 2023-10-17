@@ -8,7 +8,7 @@ char *handle_s(va_list args)
 {
 	char *source;
 	char *final;
-	int len;
+	int len, x;
 
 	source = va_arg(args, char *);
 	if (source == NULL)
@@ -22,7 +22,7 @@ char *handle_s(va_list args)
 	{
 		return (NULL);
 	}
-		int x = 0;
+		x = 0;
 
 	while (source[x] != '\0')
 	{
