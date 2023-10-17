@@ -14,7 +14,8 @@ char* (*get_operation(char c))(va_list)
 		{'s', handle_s},
         {'d', handle_d},
         {'i', handle_d},
-        {'b', int_to_bin}
+        {'b', int_to_bin},
+        {'\0', NULL}
 	};
 
 	while (keys[k].keyID != '\0')
