@@ -9,7 +9,7 @@ char *reverse(va_list args)
 {
 	char *rog;
 	char *og;
-	int r , size, v;
+	int r, size, v;
 
 	r = 0;
 
@@ -26,7 +26,7 @@ char *reverse(va_list args)
 		return (NULL);
 	}
 
-	for(v = (size - 1); v >= 0; v--)
+	for (v = (size - 1); v >= 0; v--)
 	{
 		rog[r++] = og[v];
 	}
