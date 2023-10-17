@@ -22,7 +22,7 @@ char *handle_s(va_list args)
 	{
 		return (NULL);
 	}
-		int x = 0
+		int x = 0;
 
 	while (source[x] != '\0')
 	{
