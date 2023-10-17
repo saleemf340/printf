@@ -5,7 +5,7 @@
  * @c: identifier for function
  * Return: Pointer to needed function
  */
-char (*get_operation(char c))(va_list)
+char* (*get_operation(char c))(va_list)
 {
 	int k = 0;
 

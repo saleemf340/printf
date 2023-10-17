@@ -20,6 +20,7 @@ int chk_space_overflow(char *string, int len);
 
 char *handle_c(va_list list);
 char *handle_s(va_list list);
-char (*get_operation(char c))(va_list)
+
+char* (*get_operation(char c))(va_list)
 
 #endif
